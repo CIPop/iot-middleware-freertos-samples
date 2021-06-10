@@ -20,7 +20,7 @@ Run [Azure IoT Sample](demo/sample_azure_iot/sample_azure_iot.c))
 Ensure that cmake, ninja and the ARM toolset binaries are available in the `PATH` environment variable.
 
 You may also need to enable long path support for both Windows and git:
-- Winodws: https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later
+- Windows: https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later
 - Git: as Administrator run `git config --system core.longpaths true`
 
 #### Clone and initialize the repository
@@ -35,13 +35,17 @@ You may also need to enable long path support for both Windows and git:
 We currently have samples for the following devices. 
 
 - Linux
-
-  Configure [azure iot endpoint config](demos/projects/PC/linux/config/demo_config.h) and [network interface](demos/projects/PC/linux/config/FreeRTOSConfig.h)
+  
+  The Linux emulator (development-only) has an additional prerequisite: selection of of a network interface with DHCP.
+  
+  Configure [azure iot endpoint config](demos/projects/PC/linux/config/demo_config.h) and [configNETWORK_INTERFACE_TO_USE](demos/projects/PC/linux/config/FreeRTOSConfig.h)
   ```bash
   cmake -G Ninja -DVENDOR=PC -DBOARD=linux -Bbuild_linux .
   cmake --build build_linux
   ```
-  Run ./build_linux/demos/projects/PC/linux/iot-middleware-sample.bin .
+  Run 
+  
+  `sudo ./build_linux/demos/projects/PC/linux/iot-middleware-sample.bin .`
   
 - b-l475e-iot01a
 
@@ -74,3 +78,5 @@ We currently have samples for the following devices.
   
   ```
   Flash ./mimxrt1060/demos/projects/NXP/mimxrt1060/iot-middleware-sample.bin to mimxrt1060 device.
+
+## Visual Studio Code

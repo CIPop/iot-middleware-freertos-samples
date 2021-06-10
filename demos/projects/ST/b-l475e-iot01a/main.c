@@ -35,34 +35,10 @@
 
 /* Demo includes */
 #include "wifi.h"
+#include "demo_config.h"
 
 /* WiFi driver includes. */
 #include "es_wifi.h"
-
-/* Define the default wifi ssid and password. The user can override this 
-   via -D command line option or via project settings.  */
-
-#ifndef WIFI_SSID
-//#error "Symbol WIFI_SSID must be defined."
-#define WIFI_SSID "<SSID>"
-#endif /* WIFI_SSID  */
-
-#ifndef WIFI_PASSWORD
-//#error "Symbol WIFI_PASSWORD must be defined."
-#define WIFI_PASSWORD "<Password>"
-#endif /* WIFI_PASSWORD  */
-
-/* WIFI Security type, the security types are defined in wifi.h.
-  WIFI_ECN_OPEN = 0x00,         
-  WIFI_ECN_WEP = 0x01,          
-  WIFI_ECN_WPA_PSK = 0x02,      
-  WIFI_ECN_WPA2_PSK = 0x03,     
-  WIFI_ECN_WPA_WPA2_PSK = 0x04, 
-*/
-#ifndef WIFI_SECURITY_TYPE
-//#error "Symbol WIFI_SECURITY_TYPE must be defined."
-#define WIFI_SECURITY_TYPE  WIFI_ECN_WPA2_PSK
-#endif /* WIFI_SECURITY_TYPE  */
 
 uint8_t  MAC_Addr[6];
 uint8_t  IP_Addr[4];
