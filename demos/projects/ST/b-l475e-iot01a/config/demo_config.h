@@ -46,6 +46,34 @@ extern void vLoggingPrintf( const char * pcFormatString,
 
 /************ End of logging configuration ****************/
 
+/************ WiFi Configuration **************************/
+/* Define the default wifi ssid and password. The user can override this 
+   via -D command line option or via project settings.  */
+
+#ifndef WIFI_SSID
+//#error "Symbol WIFI_SSID must be defined."
+#define WIFI_SSID                           "<YOUR WIFI SSID>"
+#endif /* WIFI_SSID  */
+
+#ifndef WIFI_PASSWORD
+//#error "Symbol WIFI_PASSWORD must be defined."
+#define WIFI_PASSWORD                       "<YOUR WIFI PASSWORD>"
+#endif /* WIFI_PASSWORD  */
+
+/* WIFI Security type, the security types are defined in wifi.h.
+  WIFI_ECN_OPEN = 0x00,         
+  WIFI_ECN_WEP = 0x01,          
+  WIFI_ECN_WPA_PSK = 0x02,      
+  WIFI_ECN_WPA2_PSK = 0x03,     
+  WIFI_ECN_WPA_WPA2_PSK = 0x04, 
+*/
+#ifndef WIFI_SECURITY_TYPE
+//#error "Symbol WIFI_SECURITY_TYPE must be defined."
+#define WIFI_SECURITY_TYPE WIFI_ECN_WPA2_PSK
+#endif /* WIFI_SECURITY_TYPE  */
+
+/************ End of WiFi Configuration ********************/
+
 /**
  * @brief Enable Device Provisioning
  * 
