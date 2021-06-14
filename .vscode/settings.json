@@ -8,6 +8,8 @@
     "files.associations": {
         "logging_levels.h": "c",
         "freertos.h": "c",
-        "az_hfsm.h": "c"
+        "az_hfsm.h": "c",
+        "azure_iot_hub_client.h": "c",
+        "task.h": "c"
     }
 }
