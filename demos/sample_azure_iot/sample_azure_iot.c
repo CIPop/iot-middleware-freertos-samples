@@ -288,7 +288,7 @@ static void prvHandleDeviceTwinMessage( AzureIoTHubClientTwinResponse_t * pxMess
  */
 static uint32_t prvSetupNetworkCredentials( NetworkCredentials_t * pxNetworkCredentials )
 {
-    pxNetworkCredentials->xDisableSni = democonfigDISABLE_SNI;
+    pxNetworkCredentials->xDisableSni = pdFALSE;
     /* Set the credentials for establishing a TLS connection. */
     pxNetworkCredentials->pucRootCa = ( const unsigned char * ) democonfigROOT_CA_PEM;
     pxNetworkCredentials->xRootCaSize = sizeof( democonfigROOT_CA_PEM );
