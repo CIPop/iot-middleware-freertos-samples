@@ -10,6 +10,8 @@
         "freertos.h": "c",
         "az_hfsm.h": "c",
         "azure_iot_hub_client.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "demo_config.h": "c",
+        "logging_stack.h": "c"
     }
 }
