@@ -4,14 +4,5 @@
     "cmake.generator": "Ninja",
     "cmake.buildDirectory": "${workspaceFolder}/b-l475e-iot01a",
     "vscode-embedded.registerViewer.svd.path": ".vscode/STM32L4x5.svd",
-    "vscode-embedded.registerViewer.useMock": true,
-    "files.associations": {
-        "logging_levels.h": "c",
-        "freertos.h": "c",
-        "az_hfsm.h": "c",
-        "azure_iot_hub_client.h": "c",
-        "task.h": "c",
-        "demo_config.h": "c",
-        "logging_stack.h": "c"
-    }
+    "vscode-embedded.registerViewer.useMock": true
 }
