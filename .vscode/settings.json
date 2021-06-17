@@ -4,5 +4,10 @@
     "cmake.generator": "Ninja",
     "cmake.buildDirectory": "${workspaceFolder}/b-l475e-iot01a",
     "vscode-embedded.registerViewer.svd.path": ".vscode/STM32L4x5.svd",
-    "vscode-embedded.registerViewer.useMock": true
+    "vscode-embedded.registerViewer.useMock": true,
+    "files.associations": {
+        "az_precondition_internal.h": "c",
+        "az_retry_internal.h": "c",
+        "az_log.h": "c"
+    }
 }
