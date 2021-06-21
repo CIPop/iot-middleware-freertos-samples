@@ -1,4 +1,8 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "cmake.generator": "Ninja"
+    "cmake.configureOnOpen": true,
+    "cmake.generator": "Ninja",
+    "cmake.buildDirectory": "${workspaceFolder}/mimxrt1060",
+    "vscode-embedded.registerViewer.svd.path": ".vscode/MIMXRT1062.svd",
+    "vscode-embedded.registerViewer.useMock": false
 }
