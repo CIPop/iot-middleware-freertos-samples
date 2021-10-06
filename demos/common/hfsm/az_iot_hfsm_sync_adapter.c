@@ -159,6 +159,7 @@ static int32_t running(az_hfsm* me, az_hfsm_event event)
     case AZ_IOT_HFSM_SYNC_DO_WORK:
       LogInfo( ("running: AZ_IOT_HFSM_SYNC_DO_WORK") );
       az_iot_hfsm_event_data_error status;
+      az_hfsm_transition_peer(me, running, idle);
 
 #ifdef AZ_IOT_HFSM_PROVISIONING_ENABLED
       if (me == &provisioning_hfsm)
@@ -188,7 +189,6 @@ static int32_t running(az_hfsm* me, az_hfsm_event event)
         ret = az_hfsm_post_event((az_hfsm*)(&iot_hfsm), az_hfsm_sync_event_error);
       }
 
-      az_hfsm_transition_peer(me, running, idle);
       break;
 
     case AZ_IOT_HFSM_SYNC_DO_DELAY:
@@ -216,8 +216,8 @@ static int32_t timeout(az_hfsm* me, az_hfsm_event event)
     case AZ_IOT_HFSM_SYNC_DO_WORK:
       LogInfo( ("timeout: AZ_IOT_HFSM_SYNC_DO_WORK") );
       az_iot_hfsm_sync_adapter_sleep(delay_milliseconds);
-      ret = az_hfsm_post_event((az_hfsm*)(&iot_hfsm), az_hfsm_timeout_event);
       az_hfsm_transition_peer(me, timeout, idle);
+      ret = az_hfsm_post_event((az_hfsm*)(&iot_hfsm), az_hfsm_timeout_event);
       break;
 
     default:

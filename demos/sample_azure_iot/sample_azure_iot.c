@@ -852,12 +852,16 @@ static TlsTransportStatus_t prvConnectToServerWithBackoffRetries( const char * p
                                        sampleazureiotRETRY_MAX_BACKOFF_DELAY_MS,
                                        sampleazureiotRETRY_MAX_ATTEMPTS );
 
+
+#if TODO
     /* Attempt to connect to IoT Hub. If connection fails, retry after
      * a timeout. Timeout value will exponentially increase till maximum
      * attempts are reached.
      */
     do
     {
+#endif
+
         LogInfo( ( "Creating a TLS connection to %s:%u.\r\n", pcHostName, port ) );
         /* Attempt to create a mutually authenticated TLS connection. */
         xNetworkStatus = TLS_Socket_Connect( pxNetworkContext,
@@ -866,6 +870,7 @@ static TlsTransportStatus_t prvConnectToServerWithBackoffRetries( const char * p
                                              sampleazureiotTRANSPORT_SEND_RECV_TIMEOUT_MS,
                                              sampleazureiotTRANSPORT_SEND_RECV_TIMEOUT_MS );
 
+#if TODO
         if( xNetworkStatus == eTLSTransportConnectFailure )
         {
             /* Generate a random number and calculate backoff value (in milliseconds) for
@@ -887,7 +892,9 @@ static TlsTransportStatus_t prvConnectToServerWithBackoffRetries( const char * p
                 vTaskDelay( pdMS_TO_TICKS( usNextRetryBackOff ) );
             }
         }
+
     } while( ( xNetworkStatus != eTLSTransportSuccess ) && ( xBackoffAlgStatus == BackoffAlgorithmSuccess ) );
+#endif
 
     return xNetworkStatus;
 }
