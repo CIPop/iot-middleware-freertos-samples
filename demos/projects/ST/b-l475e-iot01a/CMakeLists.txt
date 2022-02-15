@@ -20,6 +20,7 @@ set(PROJECT_SOURCES
     ${STCODE_SOURCES}
     port/sockets_wrapper_stm32l475.c
     sample_gsg_device.c
+    coredump.c
     main.c)
 
 stm32_add_linker_script(CMSIS::STM32::L4 INTERFACE

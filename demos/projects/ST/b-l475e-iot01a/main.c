@@ -113,6 +113,37 @@ void vLoggingPrintf( const char * pcFormat,
     va_end( vargs );
 }
 
+// Generates a fault exception
+void GenerateFault()
+{
+    int *a = (int*) 0x41000000;
+    int b = *a;
+
+    printf("\nFail! Should not arrive here. (b=%d)\r\n", b);
+    while (1);
+}
+
+extern int CheckCoreDump();
+
+int test_crash() 
+{
+    int ret;
+    if (!CheckCoreDump())
+    {
+        printf("\r\n!!! INJECTING BUS FAULT !!!\r\n");
+        GenerateFault();
+        printf("\r\nFail! Should not arrive here.\r\n");
+        ret = 1;
+    }
+    else
+    {
+        printf("\r\nOK.\r\n");
+        ret = 0;
+    }
+
+    return ret;
+}
+
 /**
  * @brief Application runtime entry point.
  */
@@ -362,6 +393,8 @@ static void prvMiscInitialization( void )
 
     /* Discovery and Initialize all the Target's Features */
     Init_MEM1_Sensors();
+
+    test_crash();
 
     if( prvInitializeWifi() != 0 )
     {

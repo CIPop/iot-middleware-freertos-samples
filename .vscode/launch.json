@@ -38,14 +38,15 @@
             "request": "launch",
             "servertype": "openocd",
             "device": "STM32L475VG",
-            "runToMain": true,
-            "executable": "${workspaceFolder}/b-l475e-iot01a/demos/projects/ST/b-l475e-iot01a/iot-middleware-sample.elf",
+            "runToMain": false,
+            "executable": "${workspaceFolder}/b-l475e-iot01a/demos/projects/ST/b-l475e-iot01a/iot-middleware-sample-gsg.elf",
             "svdFile": "${workspaceFolder}/.vscode/STM32L4x5.svd",
             "cwd": "${workspaceRoot}",
+            //"rtos": "auto",
             "configFiles": [
                 "board/stm32l4discovery.cfg"
-            ],
-            "preLaunchTask": "Build and Deploy b-l475e-iot01a"
+            ]//,
+            //"preLaunchTask": "Build and Deploy b-l475e-iot01a"
         },
         {
             "name": "NXP mimxrt1060: Local J-Link",

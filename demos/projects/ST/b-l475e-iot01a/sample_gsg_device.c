@@ -8,6 +8,7 @@
 #include "stm32l475e_iot01_gyro.h"
 #include "stm32l475e_iot01_magneto.h"
 #include "stm32l475e_iot01_accelero.h"
+#include "coredump.h"
 
 /* Standard includes. */
 #include <stdbool.h>
@@ -36,7 +37,34 @@
 #define samplegsgdeviceTELEMETRY_GYROSCOPEY        ( "gyroscopeY" )
 #define samplegsgdeviceTELEMETRY_GYROSCOPEZ        ( "gyroscopeZ" )
 
-const char * pcModelId = "dtmi:azureiot:devkit:freertos:gsgstml475;2";
+// Watson IoT Interface
+#define samplegsgdeviceTELEMETRY_CRASHEVENT        ( "CrashEvent" )
+#define samplegsgdeviceTELEMETRY_R0                ( "R0" )
+#define samplegsgdeviceTELEMETRY_R1                ( "R1" )
+#define samplegsgdeviceTELEMETRY_R2                ( "R2" )
+#define samplegsgdeviceTELEMETRY_R3                ( "R3" )
+#define samplegsgdeviceTELEMETRY_R4                ( "R4" )
+#define samplegsgdeviceTELEMETRY_R5                ( "R5" )
+#define samplegsgdeviceTELEMETRY_R6                ( "R6" )
+#define samplegsgdeviceTELEMETRY_R7                ( "R7" )
+#define samplegsgdeviceTELEMETRY_R8                ( "R8" )
+#define samplegsgdeviceTELEMETRY_R9                ( "R9" )
+#define samplegsgdeviceTELEMETRY_R10               ( "R10" )
+#define samplegsgdeviceTELEMETRY_R11               ( "R11" )
+#define samplegsgdeviceTELEMETRY_R12               ( "R12" )
+#define samplegsgdeviceTELEMETRY_LR                ( "LR" )
+#define samplegsgdeviceTELEMETRY_PC                ( "PC" )
+#define samplegsgdeviceTELEMETRY_XPSR              ( "XPSR" )
+#define samplegsgdeviceTELEMETRY_CFSR              ( "CFSR" )
+#define samplegsgdeviceTELEMETRY_HFSR              ( "HFSR" )
+#define samplegsgdeviceTELEMETRY_DFSR              ( "DFSR" )
+#define samplegsgdeviceTELEMETRY_MMFAR             ( "MMFAR" )
+#define samplegsgdeviceTELEMETRY_BFAR              ( "BFAR" )
+#define samplegsgdeviceTELEMETRY_AFSR              ( "AFSR" )
+#define samplegsgdeviceTELEMETRY_STACK             ( "STACK" )
+
+//const char * pcModelId = "dtmi:azureiot:devkit:freertos:gsgstml475;3";
+const char * pcModelId = "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7;1";
 
 const char * pcManufacturerPropertyValue = "STMicroelectronics";
 const char * pcModelPropertyValue = "B-L475E-IOT01A";
@@ -44,8 +72,8 @@ const char * pcSoftwareVersionPropertyValue = "1.0.0";
 const char * pcOsNamePropertyValue = "FreeRTOS";
 const char * pcProcessorArchitecturePropertyValue = "Arm Cortex M4";
 const char * pcProcessorManufacturerPropertyValue = "STMicroelectronics";
-const double xTotalStoragePropertyValue = 8192;
-const double xTotalMemoryPropertyValue = 768;
+const double xTotalStoragePropertyValue = 0;
+const double xTotalMemoryPropertyValue = 128;
 
 typedef enum TelemetryStateType_t
 {
@@ -57,6 +85,71 @@ typedef enum TelemetryStateType_t
 } TelemetryStateType_t;
 
 static TelemetryStateType_t xTelemetryState = eTelemetryStateTypeDefault;
+
+/*-----------------------------------------------------------*/
+
+static void prvCreateWatsonIoTCoreDump( AzureIoTJSONWriter_t * xWriter )
+{
+    AzureIoTResult_t xResult;
+
+    const CoreDumpStruct* dump;
+    dump = GetCoreDumpInfo();
+
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_CRASHEVENT, sizeof( samplegsgdeviceTELEMETRY_CRASHEVENT ) - 1, 1);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R0, sizeof( samplegsgdeviceTELEMETRY_R0 ) - 1, dump->r0);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R1, sizeof( samplegsgdeviceTELEMETRY_R1 ) - 1, dump->r1);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R2, sizeof( samplegsgdeviceTELEMETRY_R2 ) - 1, dump->r2);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R3, sizeof( samplegsgdeviceTELEMETRY_R3 ) - 1, dump->r3);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R4, sizeof( samplegsgdeviceTELEMETRY_R4 ) - 1, dump->r4);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R5, sizeof( samplegsgdeviceTELEMETRY_R5 ) - 1, dump->r5);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R6, sizeof( samplegsgdeviceTELEMETRY_R6 ) - 1, dump->r6);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R7, sizeof( samplegsgdeviceTELEMETRY_R7 ) - 1, dump->r7);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R8, sizeof( samplegsgdeviceTELEMETRY_R8 ) - 1, dump->r8);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R9, sizeof( samplegsgdeviceTELEMETRY_R9 ) - 1, dump->r9);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R10, sizeof( samplegsgdeviceTELEMETRY_R10 ) - 1, dump->r10);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R11, sizeof( samplegsgdeviceTELEMETRY_R11 ) - 1, dump->r11);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_R12, sizeof( samplegsgdeviceTELEMETRY_R12 ) - 1, dump->r12);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_LR, sizeof( samplegsgdeviceTELEMETRY_LR ) - 1, dump->lr);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_PC, sizeof( samplegsgdeviceTELEMETRY_PC ) - 1, dump->pc);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_XPSR, sizeof( samplegsgdeviceTELEMETRY_XPSR ) - 1, dump->xpsr);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_CFSR, sizeof( samplegsgdeviceTELEMETRY_CFSR ) - 1, dump->cfsr);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_HFSR, sizeof( samplegsgdeviceTELEMETRY_HFSR ) - 1, dump->hfsr);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_DFSR, sizeof( samplegsgdeviceTELEMETRY_DFSR ) - 1, dump->dfsr);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_MMFAR, sizeof( samplegsgdeviceTELEMETRY_MMFAR ) - 1, dump->mmfar);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_BFAR, sizeof( samplegsgdeviceTELEMETRY_BFAR ) - 1, dump->bfar);
+    configASSERT( xResult == eAzureIoTSuccess );
+    xResult = AzureIoTJSONWriter_AppendPropertyWithInt32Value( xWriter, ( uint8_t * ) samplegsgdeviceTELEMETRY_AFSR, sizeof( samplegsgdeviceTELEMETRY_AFSR ) - 1, dump->afsr);
+    configASSERT( xResult == eAzureIoTSuccess );
+
+    // TODO : Stack as Array
+
+    ResetCoreDumpMarker();
+}
+/*-----------------------------------------------------------*/
+
+
+
 /*-----------------------------------------------------------*/
 
 static void prvCreateTelemetryDevice( AzureIoTJSONWriter_t * xWriter )
@@ -159,29 +252,37 @@ uint32_t ulCreateTelemetry( uint8_t * pucTelemetryData,
     xResult = AzureIoTJSONWriter_AppendBeginObject( &xWriter );
     configASSERT( xResult == eAzureIoTSuccess );
 
-    switch( xTelemetryState )
+    if (IsCoreDumpPresent())
     {
-        case eTelemetryStateTypeDefault:
-            prvCreateTelemetryDevice( &xWriter );
-            break;
-
-        case eTelemetryStateTypeMagnetometer:
-            prvCreateTelemetryMagnetometer( &xWriter );
-            break;
-
-        case eTelemetryStateTypeAccelerometer:
-            prvCreateTelemetryAccelerometer( &xWriter );
-            break;
-
-        case eTelemetryStateTypeGyroscope:
-            prvCreateTelemetryGyroscope( &xWriter );
-            break;
-
-        default:
-            break;
+        LogError( ( "Core-Dump Present. Sending report!" ) );
+        prvCreateWatsonIoTCoreDump( &xWriter );
     }
+    else
+    {
+        switch( xTelemetryState )
+        {
+            case eTelemetryStateTypeDefault:
+                prvCreateTelemetryDevice( &xWriter );
+                break;
 
-    xTelemetryState = ( xTelemetryState + 1 ) % eTelemetryStateTypeEnd;
+            case eTelemetryStateTypeMagnetometer:
+                prvCreateTelemetryMagnetometer( &xWriter );
+                break;
+
+            case eTelemetryStateTypeAccelerometer:
+                prvCreateTelemetryAccelerometer( &xWriter );
+                break;
+
+            case eTelemetryStateTypeGyroscope:
+                prvCreateTelemetryGyroscope( &xWriter );
+                break;
+
+            default:
+                break;
+        }
+
+        xTelemetryState = ( xTelemetryState + 1 ) % eTelemetryStateTypeEnd;
+    }
 
     xResult = AzureIoTJSONWriter_AppendEndObject( &xWriter );
     configASSERT( xResult == eAzureIoTSuccess );

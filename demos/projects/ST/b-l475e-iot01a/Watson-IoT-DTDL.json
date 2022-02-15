@@ -1,0 +1,244 @@
+{
+    "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7;1",
+    "@type": "Interface",
+    "contents": [
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:ForceReboot;1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "displayName": {
+                "en": "Force Reboot"
+            },
+            "name": "ForceReboot"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:CrashEvent;1",
+            "@type": [
+                "Telemetry",
+                "Event"
+            ],
+            "displayName": {
+                "en": "Crash Event"
+            },
+            "name": "CrashEvent",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R0;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R0"
+            },
+            "name": "R0",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R1;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R1"
+            },
+            "name": "R1",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R2;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R2"
+            },
+            "name": "R2",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R3;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R3"
+            },
+            "name": "R3",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R4;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R4"
+            },
+            "name": "R4",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R5;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R5"
+            },
+            "name": "R5",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R6;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R6"
+            },
+            "name": "R6",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R7;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R7"
+            },
+            "name": "R7",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R8;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R8"
+            },
+            "name": "R8",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R9;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R9"
+            },
+            "name": "R9",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R10;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R10"
+            },
+            "name": "R10",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R11;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R11"
+            },
+            "name": "R11",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:R12;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "R12"
+            },
+            "name": "R12",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:LR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "LR"
+            },
+            "name": "LR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:PC;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "PC"
+            },
+            "name": "PC",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:XPSR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "XPSR"
+            },
+            "name": "XPSR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:CFSR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "CFSR"
+            },
+            "name": "CFSR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:HFSR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "HFSR"
+            },
+            "name": "HFSR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:DFSR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "DFSR"
+            },
+            "name": "DFSR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:MMFAR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "MMFAR"
+            },
+            "name": "MMFAR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:BFAR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "BFAR"
+            },
+            "name": "BFAR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:AFSR;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "AFSR"
+            },
+            "name": "AFSR",
+            "schema": "integer"
+        },
+        {
+            "@id": "dtmi:watsonIot:WatsonIoTForARMCortexM4_6s7:STACK;1",
+            "@type": "Telemetry",
+            "displayName": {
+                "en": "STACK"
+            },
+            "name": "STACK",
+            "schema": {
+                "@type": "Array",
+                "elementSchema": "integer"
+            }
+        }
+    ],
+    "displayName": {
+        "en": "Watson IoT for ARM Cortex M4"
+    },
+    "@context": [
+        "dtmi:iotcentral:context;2",
+        "dtmi:dtdl:context;2"
+    ]
+}

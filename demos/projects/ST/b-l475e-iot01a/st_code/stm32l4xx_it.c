@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "coredump.h"
 #include "stm32l4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -79,16 +80,23 @@ void NMI_Handler(void)
 /**
   * @brief This function handles Hard fault interrupt.
   */
+void HardFault_Handler(void) __attribute__ (( naked ));
+
 void HardFault_Handler(void)
 {
-  /* USER CODE BEGIN HardFault_IRQn 0 */
-
-  /* USER CODE END HardFault_IRQn 0 */
-  while (1)
-  {
-    /* USER CODE BEGIN W1_HardFault_IRQn 0 */
-    /* USER CODE END W1_HardFault_IRQn 0 */
-  }
+    // Assumes this is not a stacking error.
+    
+    __asm volatile
+    (
+        " tst lr, #4                                        \n"
+        " ite eq                                            \n"
+        " mrseq r0, msp                                     \n"
+        " mrsne r0, psp                                     \n"
+        " ldr r1, core_dump_address_const                   \n"
+        " bx r1                                             \n"
+        " .align 4                                          \n"
+        " core_dump_address_const: .word CoreDump           \n"
+    );
 }
 
 /**

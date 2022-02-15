@@ -1,4 +1,9 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "cmake.generator": "Ninja"
+    "cmake.generator": "Ninja",
+    "cortex-debug.variableUseNaturalFormat": false,
+    "files.associations": {
+        "coredump.h": "c",
+        "backoff_algorithm.h": "c"
+    }
 }

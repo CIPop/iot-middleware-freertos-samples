@@ -37,6 +37,7 @@ _estack = 0x20018000;    /* end of RAM */
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 0x0200;     /* required amount of heap */  
 _Min_Stack_Size = 0x800; /* required amount of stack */
+_Max_Dump_Size = 0x80; /* required amount for debug dump */
 
 /* Specify the memory areas */
 MEMORY
@@ -177,7 +178,14 @@ SECTIONS
     . = ALIGN(8);
   } >RAM
 
-  
+.debug_dump :     /* Core Dump Location */
+{
+    . = ALIGN(8);
+    PROVIDE ( dump_location = . );
+    PROVIDE ( _dump_location = . );
+    . = . + _Max_Dump_Size;
+    . = ALIGN(8);
+}
 
   /* Remove information from the standard libraries */
   /DISCARD/ :

@@ -364,3 +364,6 @@ MigrationBackup/
 /build_st_b-l4s5i-iot01a
 /build_st_b-l475e-iot01a
 /build_st_stm32h745i-disco
+
+libs/**
+.vscode/.cortex-debug.*

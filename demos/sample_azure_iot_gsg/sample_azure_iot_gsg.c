@@ -138,7 +138,7 @@ struct NetworkContext
 #endif /* democonfigENABLE_DPS_SAMPLE */
 
 /* Scratch buffer */
-static uint8_t ucScratchBuffer[ 128 ];
+static uint8_t ucScratchBuffer[ 1024 ];
 
 /* Property buffer */
 static uint8_t ucPropertyPayloadBuffer[ 400 ];
